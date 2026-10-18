@@ -1,5 +1,6 @@
 module.exports = {
-    appName: "Project Nova",
-    environment: "development",
-    paymentGateway: { provider: "SandboxPay", currency: "PHP" }
+	appName: "Project Nova",
+	environment: "development",
+	apiTimeout: 5000,
+	paymentGateway: { provider: "SandboxPay", currency: "PHP" }
 };
