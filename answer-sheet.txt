@@ -1,0 +1,80 @@
+Git Mastery & Troubleshooting Activity
+Trishia Anne M. Maralit | BSIS - 3C
+
+PART 1: CORE REPOSITORY MANAGEMENT
+(Task -> Git command I used)
+
+1. Initialization
+   git init
+
+2. Staging
+   git add auth-service.js
+
+3. Committing
+   git commit -m "Added initial auth service logic."
+
+4. Branching
+   git branch feature/payment-gateway
+
+5. Navigation
+   git checkout feature/payment-gateway
+
+6. Publishing
+   git push --set-upstream origin feature/payment-gateway
+
+7. Syncing
+   git pull origin main
+
+8. Conflict Check
+   git status
+
+9. Resolution
+   git commit -m "Merged main into feature/payment-gateway and resolved config.js conflict"
+
+
+PART 2: TROUBLESHOOTING & EMERGENCY FIXES
+(Problem -> Git command I used)
+
+1. "Oops, wrong file" (unstage .env, keep local changes)
+   git restore --staged .env
+
+2. "Typo in the message" (fix the last commit message)
+   git commit --amend -m "Added authentication token validation"
+
+3. "Forgot a file" (add styles.css to the previous commit)
+   git add styles.css
+   git commit --amend --no-edit
+
+4. "I hate these changes" (discard edits to index.html)
+   git restore index.html
+
+5. "Wrong branch" (move 3 commits off main)
+   git branch new-feature
+   git reset HEAD~3 --hard
+   git checkout new-feature
+
+6. "Detached HEAD" (save commits made while detached)
+   git switch -c recovery-branch
+
+7. "Undo a pushed mistake" (new commit that reverses the bad one)
+   git revert a550d04 --no-edit
+
+8. "Accidental deletion" (recover a deleted branch)
+   git reflog
+   git branch feature-x 32170b9
+
+9. "Ghost files" (record files deleted outside Git)
+   git add -u
+
+10. "Pushed to the void" (delete a remote branch)
+    git push origin --delete testing-junk
+
+
+NOTES
+- Scenarios 2, 7, and 10 were run in this repo. The rest were run in a
+  separate sandbox repo (nova-sandbox) so they would not clutter this
+  repo's history.
+- General forms: git revert <buggy-commit-hash>
+                 git branch <deleted-branch-name> <commit-hash>
+- For 8, the branch was first force-deleted with "git branch -D feature-x"
+  because "-d" refuses to delete unmerged work.
